@@ -1,5 +1,37 @@
-if else while
-no
-tres
-try
-catch
+public class Lexico { 12345
+
+    public static void main(String[] args) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        try {
+            System.out.print("Ingresa una cadena: ");
+            String input = reader.readLine();
+
+            // Definir patrones para los tokens
+            Pattern identifierPattern = Pattern.compile("[a-zA-Z]+");
+            Pattern numberPattern = Pattern.compile("\\d+");
+
+            // Utilizar Matcher para encontrar tokens
+            Matcher identifierMatcher = identifierPattern.matcher(input);
+            Matcher numberMatcher = numberPattern.matcher(input);
+
+            // Encontrar identificadores
+            while (identifierMatcher.find()) {
+                System.out.println("Identificador: " + identifierMatcher.group());
+            }
+
+            // Encontrar números
+            while (numberMatcher.find()) {
+                System.out.println("Número: " + numberMatcher.group());
+            }
+
+/*Puedes agregar más patrnes para otros tipos de tokens según tus necesidades
+*/
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
